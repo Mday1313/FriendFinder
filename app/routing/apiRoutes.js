@@ -1,9 +1,13 @@
 
+// Dependencies
+var surveyResults = require("../data/friends.js");
+
+
+
 module.exports = function(app) {
 
-    require("../data/friends.js")(app);
+    
 
-   
     
 // Displays all json
 app.get("/api/friends", function(req, res) {

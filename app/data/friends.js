@@ -1,4 +1,4 @@
-module.exports = function(app) {
+ 
 
 var surveyResults = [
     {
@@ -8,4 +8,6 @@ var surveyResults = [
 
     }
 ]
-}
+
+
+module.exports = surveyResults;
