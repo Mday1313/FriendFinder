@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <h3><strong>Question 1</strong></h3>
-                <label for="question">Example select</label>
+                <label for="question">You do your best work alone.</label>
                 <br>
                 <select class="answer" id="q1">
                     <option selected>Select an Option</option>
@@ -42,7 +42,7 @@
             </div>
             <div class="form-group">
                 <h3><strong>Question 2</strong></h3>
-                <label for="question">Example select</label>
+                <label for="question">You think steak should be a part of every meal.</label>
                 <br>
                 <select class="answer" id="q2">
                     <option selected>Select an Option</option>
@@ -55,7 +55,7 @@
             </div>
             <div class="form-group">
                 <h3><strong>Question 3</strong></h3>
-                <label for="question">Example select</label>
+                <label for="question">Nothing makes you happier than traveling to new places.</label>
                 <br>
                 <select class="answer" id="q3">
                     <option selected>Select an Option</option>
@@ -68,7 +68,7 @@
             </div>
             <div class="form-group">
                 <h3><strong>Question 4</strong></h3>
-                <label for="question">Example select</label>
+                <label for="question">In high stress situations, you can maintain your concentration and calm.</label>
                 <br>
                 <select class="answer" id="q4">
                     <option selected>Select an Option</option>
@@ -81,7 +81,7 @@
             </div>
             <div class="form-group">
                 <h3><strong>Question 5</strong></h3>
-                <label for="question">Example select</label>
+                <label for="question">You are extremely organized and have a hard time when things are out of place.</label>
                 <br>
                 <select class="answer" id="q5">
                     <option selected>Select an Option</option>
@@ -94,7 +94,7 @@
             </div>
             <div class="form-group">
                 <h3><strong>Question 6</strong></h3>
-                <label for="question">Example select</label>
+                <label for="question">You are daring when it comes to food.</label>
                 <br>
                 <select class="answer" id="q6">
                     <option selected>Select an Option</option>
@@ -107,7 +107,7 @@
             </div>
             <div class="form-group">
                 <h3><strong>Question 7</strong></h3>
-                <label for="question">Example select</label>
+                <label for="question">Your preferred place to be on a Saturday night is at home on your sofa.</label>
                 <br>
                 <select class="answer" id="q7">
                     <option selected>Select an Option</option>
@@ -120,7 +120,7 @@
             </div>
             <div class="form-group">
                 <h3><strong>Question 8</strong></h3>
-                <label for="question">Example select</label>
+                <label for="question">You like to hike and be outdoors.</label>
                 <br>
                 <select class="answer" id="q8">
                     <option selected>Select an Option</option>
@@ -133,7 +133,7 @@
             </div>
             <div class="form-group">
                 <h3><strong>Question 9</strong></h3>
-                <label for="question">Example select</label>
+                <label for="question">You prefer mountains over the beach.</label>
                 <br>
                 <select class="answer" id="q9">
                     <option selected>Select an Option</option>
@@ -146,7 +146,7 @@
             </div>
             <div class="form-group">
                 <h3><strong>Question 10</strong></h3>
-                <label for="question">Example select</label>
+                <label for="question">You enjoy being in crowded places.</label>
                 <br>
                 <select class="answer" id="q10">
                     <option selected>Select an Option</option>
@@ -174,18 +174,27 @@
 
     <br>
     <!-- Modal -->
-    <div id="myModal" class="modal">
+    <!-- <div id="myModal" class="modal"> -->
 
         <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 text-align=center>Your Best Match is...</h2>
-            <div class="modal-body">
-                <h2 id="bestMatch"></h2>
-                <img id="bestMatchPhoto" src="#">
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  
+                  <h4 class="modal-title">Your Best Match is...</h4>
+                </div>
+                <div class="modal-body">
+                    <h2 id="bestMatch"></h2>
+                    <img width="600px" id="bestMatchPhoto" src="#">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
             </div>
-            
-        </div>
+          </div>
+        <!-- </div> -->
 
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
