@@ -197,18 +197,11 @@
         $("#submit").on("click", function (event) {
             event.preventDefault();
 
-            var q1 = $("#q1").val();
-            console.log(q1);
-            var num1 = parseInt(q1, 8);
-            var r = Math.abs(num1 - 3);
-            console.log("num " + r);
-
-            // console.log(num1);
             var newUser = {
                 name: $("#userName").val(),
                 photo: $("#userImage").val(),
                 scores: [
-                    num1,
+                    $("#q1").val(),
                     $("#q2").val(),
                     $("#q3").val(),
                     $("#q4").val(),
@@ -218,19 +211,17 @@
                     $("#q8").val(),
                     $("#q9").val(),
                     $("#q10").val()
-
                 ]
             };
-
-            // console.log("I am an array!" + newUser.scores);
-            // accessFriendData();
-            // find match
 
 
             $.post("/api/friends", newUser,
 
                 function (data) {
                     // build display $ on modal
+                    console.log(data);
+                    $("#bestMatch").text(data.name);
+                    $("#bestMatchPhoto").attr("src", data.photo);
                     // then show modal
                     $("#myModal").modal("show");
 
@@ -250,24 +241,6 @@
                         $("#q10").val()
                 });
         });
-
-
-        // var accessFriendData = function () {
-        //     $.ajax({ url: "api/friends", method: "GET" })
-        //         .then(function (friendData) {
-        //             for (var i = 0; i < friendData.length; i++) {
-        //                 var scoreArr = friendData[i].scores;
-        //                 // var numArr = scoreArr.forEach(element => {
-        //                 //     parseInt(element);
-        //                 // });
-
-        //             }
-
-        //             // console.log(numArr);
-        //         })
-        // }
-
-
 
     </script>
 

@@ -7,10 +7,6 @@ var surveyResults = require("../data/friends.js");
 module.exports = function (app) {
 
 
-  var firstArr = [];
-  var secondArr = [];
-  var resultArr = [];
-
   // Displays all json
   app.get("/api/friends", function (req, res) {
     return res.json(surveyResults);
