@@ -22,72 +22,35 @@ module.exports = function (app) {
       console.log(err);
     }
     var newUser = req.body;
-    
-
-    surveyResults.forEach(element => {
-
-      console.log(element.scores);
-
-      var arr1 = element.scores;
-      var arr2 = newUser.scores;
-
-      for (var i = 0; i < arr1.length; i++) {
-        console.log(arr1[i]);
-        firstArr = parseInt(arr1[i]);
-        for (var j = 0; j < arr2.length; j++) {
-          // console.log(arr2[i]);
-          secondArr = parseInt(arr2[i]);
-        }
-        var r = Math.abs(firstArr - secondArr);
-        console.log("dif " + r);
-        // resultArr.push(r);
-        // var sum = "";
-        // resultArr.forEach(element => {
-        //   parseInt(sum) += parseInt(element);
-         
-        //    return sum;
-          // });
-          // console.log(sum);
-          
-      }
-     
+// Loop through current users scores and make into integers
+// This will be pushed to API as integers so there is no need to parseInt them once added
+    for(var i = 0; i < newUser.scores.length; i++) {
+      newUser.scores[i] = parseInt(newUser.scores[i]);
       
-    });
+    }
+    // var to get index num of closest match, will be sent back below as res.json
+    var bestMatchIndex = 0;
+    // Each loop through the friends will replace this if lower, link to bestMatchIndex in if statement
+    var minDiff = 40;
 
-   
-
-    
-
-    
-
-
+    for(var i = 0; i < surveyResults.length; i++) {
+      var totalDiff = 0;
+      for(var j = 0; j < surveyResults[i].scores.length; j++) {
+        var dif = Math.abs(newUser.scores[j]-surveyResults[i].scores[j]);
+        totalDiff += dif;
+      }
+      if(totalDiff < minDiff) {
+        bestMatchIndex = i;
+        minDiff = totalDiff;
+      }
+    }
     surveyResults.push(newUser);
-
-    res.json(newUser);
-    console.log(newUser.scores);
-
-
-
-
+    res.json(surveyResults[bestMatchIndex]);
+    
   });
 }
 
-// var clearResults =function() {
-//   resultArr = [];
-// }
-function add(accumulator, a) {
-  return accumulator + a;
-  
-}
-// var findSum = function(r) {
-//   var resultArr = resultArr.push(r);
 
-//   var sum = resultArr.reduce(add, 0);
-
-//        console.log("Sum " + sum);
-
-//   clearResults();
-// }
 
 
 
