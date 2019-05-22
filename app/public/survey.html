@@ -157,6 +157,7 @@
                     <option value="5">5 (Strongly Agree)</option>
                 </select>
             </div>
+            <br>
             <div>
                 <a class="btn btn-primary btn-lg btn-block" id="submit" href="" role="button" style="margin: 10px"><i
                         class="far fa-question-circle"></i> Submit Survey</a>
@@ -170,8 +171,18 @@
             </div>
 
     </div>
-    <br>
 
+    <br>
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 text-align=center>Your Best Match is...</h2>
+        </div>
+
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -181,11 +192,18 @@
         $("#submit").on("click", function (event) {
             event.preventDefault();
 
+            var q1 = $("#q1").val();
+            console.log(q1);
+            var num1 = parseInt(q1, 8);
+            var r = Math.abs(num1 - 3);
+            console.log("num " + r);
+
+            // console.log(num1);
             var newUser = {
                 name: $("#userName").val(),
                 photo: $("#userImage").val(),
                 scores: [
-                    $("#q1").val(),
+                    num1,
                     $("#q2").val(),
                     $("#q3").val(),
                     $("#q4").val(),
@@ -195,36 +213,54 @@
                     $("#q8").val(),
                     $("#q9").val(),
                     $("#q10").val()
+
                 ]
             };
 
-            console.log(newUser);
+            // console.log("I am an array!" + newUser.scores);
+            // accessFriendData();
+            // find match
+
 
             $.post("/api/friends", newUser,
 
                 function (data) {
+                    // build display $ on modal
+                    // then show modal
+                    $("#myModal").modal("show");
 
-
-                    alert("Model goes here");
 
                     // Clear the form when submitting
-                    $("#userName").val("");
-                    $("#userImage").val("");
-                    $("#q1").val(""),
-                    $("#q2").val(""),
-                    $("#q3").val(""),
-                    $("#q4").val(""),
-                    $("#q5").val(""),
-                    $("#q6").val(""),
-                    $("#q7").val(""),
-                    $("#q8").val(""),
-                    $("#q9").val(""),
-                    $("#q10").val("")
+                    $("#userName").val();
+                    $("#userImage").val();
+                    $("#q1").val(),
+                        $("#q2").val(),
+                        $("#q3").val(),
+                        $("#q4").val(),
+                        $("#q5").val(),
+                        $("#q6").val(),
+                        $("#q7").val(),
+                        $("#q8").val(),
+                        $("#q9").val(),
+                        $("#q10").val()
                 });
         });
 
 
+        // var accessFriendData = function () {
+        //     $.ajax({ url: "api/friends", method: "GET" })
+        //         .then(function (friendData) {
+        //             for (var i = 0; i < friendData.length; i++) {
+        //                 var scoreArr = friendData[i].scores;
+        //                 // var numArr = scoreArr.forEach(element => {
+        //                 //     parseInt(element);
+        //                 // });
 
+        //             }
+
+        //             // console.log(numArr);
+        //         })
+        // }
 
 
 
