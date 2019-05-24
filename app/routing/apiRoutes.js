@@ -27,7 +27,7 @@ module.exports = function (app) {
     // var to get index num of closest match, will be sent back below as res.json
     var bestMatchIndex = 0;
     // Each loop through the friends will replace this if lower, link to bestMatchIndex in if statement
-    var minDiff = 40;
+    var minDiff = 50;
 
     for(var i = 0; i < surveyResults.length; i++) {
       var totalDiff = 0;
